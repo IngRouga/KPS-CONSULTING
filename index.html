@@ -18,10 +18,10 @@
 </script>
 <style>
   :root{
-    --primary:#5B3DF5;
-    --secondary:#1E40FF;
-    --navy:#081120;
-    --navy-soft:#0D1A2E;
+    --primary:#4B1E82;
+    --secondary:#F0653C;
+    --navy:#2A1052;
+    --navy-soft:#3A1868;
     --white:#FFFFFF;
     --gray:#F8FAFC;
     --ink:#1B2333;
@@ -73,7 +73,9 @@
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;}
   .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--navy);letter-spacing:-.02em;}
-  .logo span{color:var(--primary);}
+  .logo span{color:var(--secondary);}
+  .logo-sub{font-weight:400;font-size:13px;color:var(--muted);margin-left:6px;}
+  @media (max-width:900px){.logo-sub{display:none;}}
   .nav-links{display:flex;gap:36px;list-style:none;padding:0;margin:0;}
   .nav-links a{
     color:var(--navy);text-decoration:none;font-weight:500;font-size:14.5px;
@@ -424,7 +426,7 @@
 
 <header id="siteHeader">
   <div class="container nav-inner">
-    <div class="logo">KPS<span>.</span> Consulting</div>
+    <div class="logo">KPS<span>.</span><span class="logo-sub"> Kolea Prestations de Services</span></div>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#why">Pourquoi nous</a></li>
@@ -444,6 +446,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <div style="display:flex;justify-content:space-between;align-items:center;">
     <div class="logo">KPS<span>.</span></div>
+    <!-- KOLEA PRESTATIONS DE SERVICES -->
     <button id="closeMenu" style="background:none;border:none;"><i data-lucide="x" style="width:24px;height:24px;"></i></button>
   </div>
   <ul>
@@ -459,7 +462,7 @@
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="eyebrow"><span class="dot"></span> Cabinet basé à Niamey, Niger</div>
+      <div class="eyebrow"><span class="dot"></span> Votre Passeport Fiscal — Niamey, Niger</div>
       <h1>Votre partenaire de confiance en <span class="grad-text">Fiscalité, Conseil et Formation.</span></h1>
       <p class="lead">Nous accompagnons les entreprises, les entrepreneurs et les professionnels avec des solutions fiscales, des conseils stratégiques et des formations certifiantes.</p>
       <div class="hero-cta">
@@ -474,7 +477,7 @@
     </div>
     <div class="hero-visual reveal">
       <div class="hero-img-wrap">
-        <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&w=1200&auto=format&fit=crop" alt="Consultants africains en réunion d'affaires">
+        <img src="https://i.ibb.co/QFTJfGBB/Chat-GPT-Image-Jul-31-2026-11-17-10-PM.png" alt="Consultants africains en réunion d'affaires">
       </div>
       <div class="float-card fc-1">
         <div class="ic"><i data-lucide="trending-up" style="width:20px;height:20px;"></i></div>
@@ -733,7 +736,8 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo">KPS<span>.</span> Consulting</div>
-        <p class="footer-desc">Votre partenaire de confiance en fiscalité, conseil et formation, basé à Niamey, Niger.</p>
+        <p style="color:#F0653C;font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase;margin:-8px 0 18px;">Votre Passeport Fiscal</p>
+        <p class="footer-desc">Kolea Prestations de Services — votre partenaire de confiance en fiscalité, conseil et formation, basé à Niamey, Niger.</p>
         <div class="social-row">
           <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
           <a href="#"><i data-lucide="facebook" style="width:17px;height:17px;"></i></a>
