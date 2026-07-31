@@ -191,6 +191,38 @@
   .reveal-delay-4{transition-delay:.32s;}
 
   /* Stats */
+  /* Mission & Valeurs */
+  #mission-valeurs{
+    background:var(--navy);position:relative;overflow:hidden;padding:90px 0;
+  }
+  #mission-valeurs::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 10% 10%, rgba(240,101,60,.18), transparent 45%),
+               radial-gradient(circle at 90% 90%, rgba(75,30,130,.5), transparent 50%);
+  }
+  .mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;position:relative;z-index:2;}
+  .mv-card{
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+    border-radius:24px;padding:44px;
+    transition:transform .4s ease, background .4s ease;
+  }
+  .mv-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.06);}
+  .mv-pill{
+    display:inline-block;background:var(--secondary);color:#fff;
+    padding:8px 22px;border-radius:100px;font-weight:700;font-size:14px;margin-bottom:22px;
+  }
+  .mv-card h3{color:#fff;font-size:30px;font-weight:700;margin:0 0 18px;letter-spacing:-.01em;}
+  .mv-card p{color:#c7cce0;font-size:17px;line-height:1.75;margin:0;}
+  .mv-values{list-style:none;padding:0;margin:0;}
+  .mv-values li{
+    color:#e5e8f5;font-size:19px;font-weight:500;padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .mv-values li:last-child{border-bottom:none;}
+  @media (max-width:900px){
+    .mv-grid{grid-template-columns:1fr;}
+  }
+
   .stats-section{background:var(--gray);}
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(8,17,32,.06);border-radius:24px;overflow:hidden;}
   .stat-card{background:#fff;padding:44px 30px;text-align:center;}
@@ -491,6 +523,30 @@
   </div>
 </section>
 
+<!-- MISSION & VALEURS -->
+<section id="mission-valeurs">
+  <div class="container">
+    <div class="mv-grid">
+      <div class="mv-card reveal">
+        <span class="mv-pill">Mission</span>
+        <h3>Notre Mission</h3>
+        <p>Accompagner les entreprises vers une fiscalité claire, conforme et sécurisée.</p>
+      </div>
+      <div class="mv-card reveal reveal-delay-1">
+        <span class="mv-pill">Valeurs</span>
+        <h3>Nos Valeurs</h3>
+        <ul class="mv-values">
+          <li>Intégrité</li>
+          <li>Excellence</li>
+          <li>Rigueur</li>
+          <li>Leadership</li>
+          <li>Proximité</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- STATS -->
 <section class="stats-section">
   <div class="container">
@@ -691,37 +747,43 @@
         </div>
         <div class="contact-row">
           <div class="ic"><i data-lucide="phone" style="width:19px;height:19px;"></i></div>
-          <div class="txt"><b>+227 90 00 00 00</b><span>Lun – Ven, 8h – 18h</span></div>
+          <div class="txt"><b>+227 96 27 22 04</b><span>Lun – Ven, 8h – 18h</span></div>
         </div>
         <div class="contact-row">
           <div class="ic"><i data-lucide="mail" style="width:19px;height:19px;"></i></div>
-          <div class="txt"><b>contact@kpsconsulting.ne</b><span>Réponse sous 24h</span></div>
+          <div class="txt"><b>kps.do.fc@gmail.com</b><span>Réponse sous 24h</span></div>
         </div>
-        <a href="https://wa.me/22790000000" target="_blank" class="whatsapp-btn"><i data-lucide="message-circle" style="width:18px;height:18px;"></i> Discuter sur WhatsApp</a>
+        <a href="https://wa.me/22796272204" target="_blank" class="whatsapp-btn"><i data-lucide="message-circle" style="width:18px;height:18px;"></i> Discuter sur WhatsApp</a>
         <div class="map-embed">
           <iframe src="https://www.google.com/maps?q=Niamey,Niger&output=embed" loading="lazy"></iframe>
         </div>
       </div>
       <div class="contact-form-card reveal reveal-delay-1">
-        <form onsubmit="event.preventDefault(); document.getElementById('formOk').style.display='flex'; this.reset();">
+        <form id="contactForm">
+          <input type="hidden" name="_subject" value="Nouveau message — Site KPS Consulting">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
-            <div class="field"><label>Nom complet</label><input type="text" required placeholder="Votre nom"></div>
-            <div class="field"><label>Téléphone</label><input type="tel" required placeholder="+227 ..."></div>
+            <div class="field"><label>Nom complet</label><input type="text" name="Nom" required placeholder="Votre nom"></div>
+            <div class="field"><label>Téléphone</label><input type="tel" name="Téléphone" required placeholder="+227 ..."></div>
           </div>
           <div class="form-row">
-            <div class="field"><label>Email</label><input type="email" required placeholder="vous@email.com"></div>
+            <div class="field"><label>Email</label><input type="email" name="Email" required placeholder="vous@email.com"></div>
             <div class="field"><label>Service souhaité</label>
-              <select>
+              <select name="Service souhaité">
                 <option>Fiscalité</option>
                 <option>Consulting</option>
                 <option>Formations professionnelles</option>
               </select>
             </div>
           </div>
-          <div class="field"><label>Votre message</label><textarea required placeholder="Décrivez votre besoin..."></textarea></div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Envoyer le message <i data-lucide="send" style="width:16px;height:16px;"></i></button>
+          <div class="field"><label>Votre message</label><textarea name="Message" required placeholder="Décrivez votre besoin..."></textarea></div>
+          <button type="submit" id="formSubmitBtn" class="btn btn-primary" style="width:100%;justify-content:center;">Envoyer le message <i data-lucide="send" style="width:16px;height:16px;"></i></button>
           <div id="formOk" style="display:none;align-items:center;gap:8px;color:#1a9a5c;margin-top:14px;font-size:14px;font-weight:600;">
             <i data-lucide="check-circle" style="width:18px;height:18px;"></i> Message envoyé avec succès !
+          </div>
+          <div id="formErr" style="display:none;align-items:center;gap:8px;color:#c0392b;margin-top:14px;font-size:14px;font-weight:600;">
+            <i data-lucide="alert-circle" style="width:18px;height:18px;"></i> Une erreur est survenue, réessayez ou contactez-nous directement.
           </div>
         </form>
       </div>
@@ -739,7 +801,7 @@
         <p class="footer-desc">Kolea Prestations de Services — votre partenaire de confiance en fiscalité, conseil et formation, basé à Niamey, Niger.</p>
         <div class="social-row">
           <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
-          <a href="#"><i data-lucide="facebook" style="width:17px;height:17px;"></i></a>
+          <a href="https://www.facebook.com/share/1DNyENPpij/" target="_blank"><i data-lucide="facebook" style="width:17px;height:17px;"></i></a>
           <a href="#"><i data-lucide="instagram" style="width:17px;height:17px;"></i></a>
           <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
         </div>
@@ -762,12 +824,12 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Newsletter</h5>
-        <p style="color:#8b95af;font-size:14px;margin:0 0 14px;">Recevez nos actualités et conseils fiscaux.</p>
-        <div class="newsletter-row">
-          <input type="email" placeholder="Votre email">
-          <button class="btn btn-primary" style="padding:12px 20px;"><i data-lucide="arrow-right" style="width:16px;height:16px;"></i></button>
-        </div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+22796272204">+227 96 27 22 04</a></li>
+          <li><a href="mailto:kps.do.fc@gmail.com">kps.do.fc@gmail.com</a></li>
+          <li><a href="#contact">Niamey, Niger</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -777,7 +839,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/22790000000" target="_blank" class="wa-float"><i data-lucide="message-circle" style="width:28px;height:28px;"></i></a>
+<a href="https://wa.me/22796272204" target="_blank" class="wa-float"><i data-lucide="message-circle" style="width:28px;height:28px;"></i></a>
 
 <script>
   function safeCreateIcons(){
@@ -836,7 +898,43 @@
   }, {threshold:.5});
   counters.forEach(c=>counterIO.observe(c));
 
-  // testimonials slider
+  // contact form submit via FormSubmit
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const okBox = document.getElementById('formOk');
+      const errBox = document.getElementById('formErr');
+      const btn = document.getElementById('formSubmitBtn');
+      okBox.style.display = 'none';
+      errBox.style.display = 'none';
+      btn.disabled = true;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Envoi en cours...';
+      const formData = new FormData(contactForm);
+      fetch('https://formsubmit.co/ajax/kps.do.fc@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        okBox.style.display = 'flex';
+        safeCreateIcons();
+        contactForm.reset();
+      })
+      .catch(err => {
+        errBox.style.display = 'flex';
+        safeCreateIcons();
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        safeCreateIcons();
+      });
+    });
+  }
+
   const testimonials = [
     {
       quote: "KPS Consulting nous a permis de sécuriser notre conformité fiscale tout en optimisant nos charges. Un accompagnement rigoureux et humain.",
