@@ -354,14 +354,28 @@
   .testi-dot.active{width:26px;border-radius:100px;background:linear-gradient(120deg,var(--primary),var(--secondary));}
 
   /* Gallery */
-  .gallery-grid{
-    columns:3 220px;column-gap:20px;
+  .marquee-wrap{
+    overflow:hidden;position:relative;width:100%;
+    mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
-  .gallery-grid img{
-    width:100%;display:block;margin-bottom:20px;border-radius:18px;
+  .marquee-track{
+    display:flex;gap:20px;width:max-content;
+    animation:marqueeScroll 32s linear infinite;
+  }
+  .marquee-track img{
+    height:320px;width:auto;border-radius:18px;flex-shrink:0;
     transition:transform .5s ease, filter .5s ease;cursor:pointer;
   }
-  .gallery-grid img:hover{transform:scale(1.02);filter:brightness(1.05);}
+  .marquee-track img:hover{transform:scale(1.03);filter:brightness(1.05);}
+  .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+  @keyframes marqueeScroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  @media (max-width:560px){
+    .marquee-track img{height:200px;}
+  }
 
   /* Trusted by */
   .trusted-section{padding:70px 0;border-top:1px solid rgba(8,17,32,.06);border-bottom:1px solid rgba(8,17,32,.06);}
@@ -466,7 +480,6 @@
     .footer-top{grid-template-columns:1fr 1fr;}
     .nav-links{display:none;}
     .burger{display:block;}
-    .gallery-grid{columns:2 200px;}
   }
   @media (max-width:560px){
     .why-grid{grid-template-columns:1fr;}
@@ -474,7 +487,6 @@
     .form-row{grid-template-columns:1fr;}
     .trusted-row{gap:32px;}
     .hero-img-wrap img{height:400px;}
-    .gallery-grid{columns:1 100%;}
     .footer-bottom{flex-direction:column;gap:10px;text-align:center;}
   }
 
@@ -742,7 +754,9 @@
       <h2>Nos séminaires et sessions de formation</h2>
       <p>Un aperçu de nos formations professionnelles et sessions de conseil sur le terrain.</p>
     </div>
-    <div class="gallery-grid reveal">
+  </div>
+  <div class="marquee-wrap reveal">
+    <div class="marquee-track" id="marqueeTrack">
       <img src="https://i.ibb.co/HfM6Mtht/546901.jpg" alt="Séminaire professionnel KPS Consulting">
       <img src="https://i.ibb.co/svP7YP4S/546892-1.jpg" alt="Session de formation KPS Consulting">
       <img src="https://i.ibb.co/4RPL1wRJ/546894.jpg" alt="Conseil aux entreprises KPS Consulting">
@@ -757,11 +771,11 @@
   <div class="container">
     <div class="trusted-label reveal">Ils nous font confiance</div>
     <div class="trusted-row reveal">
-      <div class="logo-item">NIGER TELECOM</div>
+      <div class="logo-item">NIGERTEL</div>
       <div class="logo-item">SAHEL BANK</div>
-      <div class="logo-item">ORANO</div>
+      <div class="logo-item">Orano</div>
       <div class="logo-item">AGRIFOOD SA</div>
-      <div class="logo-item">SUCCESS SCHOOL</div>
+      <div class="logo-item">Niamey Invest</div>
     </div>
   </div>
 </section>
@@ -788,7 +802,7 @@
         </div>
         <div class="contact-row">
           <div class="ic"><i data-lucide="mail" style="width:19px;height:19px;"></i></div>
-          <div class="txt"><b>ingrouga@gmail.com</b><span>Réponse sous 24h</span></div>
+          <div class="txt"><b>kps.do.fc@gmail.com</b><span>Réponse sous 24h</span></div>
         </div>
         <a href="https://wa.me/22796272204" target="_blank" class="whatsapp-btn"><i data-lucide="message-circle" style="width:18px;height:18px;"></i> Discuter sur WhatsApp</a>
         <div class="map-embed">
@@ -879,7 +893,7 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="tel:+22796272204">+227 96 27 22 04</a></li>
-          <li><a href="kps.do.fc@gmail.com">kps.do.fc@gmail.com</a></li>
+          <li><a href="mailto:kps.do.fc@gmail.com">kps.do.fc@gmail.com</a></li>
           <li><a href="#contact">Niamey, Niger</a></li>
         </ul>
       </div>
@@ -916,6 +930,12 @@
   closeMenu.addEventListener('click', closeM);
   overlay.addEventListener('click', closeM);
   document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click', closeM));
+
+  // seamless marquee: duplicate images so the loop has no visible seam
+  const marqueeTrack = document.getElementById('marqueeTrack');
+  if(marqueeTrack){
+    marqueeTrack.innerHTML += marqueeTrack.innerHTML;
+  }
 
   // reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
